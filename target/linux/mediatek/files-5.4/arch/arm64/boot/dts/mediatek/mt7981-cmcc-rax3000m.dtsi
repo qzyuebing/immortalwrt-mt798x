@@ -23,7 +23,7 @@
 
 		green_led: green {
 			label = "xr30:white";
-			gpios = <&pio 9 GPIO_ACTIVE_LOW>;
+			gpios = <&pio 34 GPIO_ACTIVE_LOW>;
 		};
 	};
 
