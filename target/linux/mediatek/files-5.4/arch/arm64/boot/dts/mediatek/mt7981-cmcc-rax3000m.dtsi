@@ -6,7 +6,7 @@
 		led-boot = &red_led;
 		led-failsafe = &red_led;
 		led-running = &green_led;
-		led-upgrade = &blue_led;
+		led-upgrade = &red_led;
 	};
 
 	memory {
@@ -17,18 +17,13 @@
 		compatible = "gpio-leds";
 
 		red_led: red {
-			label = "rax3000m:red";
+			label = "xr30:red";
 			gpios = <&pio 35 GPIO_ACTIVE_LOW>;
 		};
 
 		green_led: green {
-			label = "rax3000m:green";
+			label = "xr30:white";
 			gpios = <&pio 9 GPIO_ACTIVE_LOW>;
-		};
-
-		blue_led: blue {
-			label = "rax3000m:blue";
-			gpios = <&pio 12 GPIO_ACTIVE_LOW>;
 		};
 	};
 
@@ -105,7 +100,7 @@
 
 				port@0 {
 					reg = <0>;
-					label = "lan1";
+					label = "lan3";
 				};
 
 				port@1 {
@@ -115,7 +110,7 @@
 
 				port@2 {
 					reg = <2>;
-					label = "lan3";
+					label = "lan1";
 				};
 
 				port@6 {
