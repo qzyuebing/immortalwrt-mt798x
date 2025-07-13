@@ -5,13 +5,13 @@
 
 / {
 	compatible = "d-team,pbr-m1", "mediatek,mt7621-soc";
-	model = "PBR-M1";
+	model = "IPTV-UDPXY by BI4PCS";
 
 	aliases {
-		led-boot = &led_sys;
-		led-failsafe = &led_sys;
-		led-running = &led_sys;
-		led-upgrade = &led_sys;
+		led-boot = &led_system;
+		led-failsafe = &led_system;
+		led-running = &led_status;
+		led-upgrade = &led_status;
 	};
 
 	chosen {
@@ -21,30 +21,14 @@
 	leds {
 		compatible = "gpio-leds";
 
-		power {
-			label = "blue:power";
-			gpios = <&gpio 31 GPIO_ACTIVE_LOW>;
-			default-state = "on";
+		led_status: status {
+			label = "white:status";
+			gpios = <&gpio 6 GPIO_ACTIVE_LOW>;
 		};
 
-		led_sys: sys {
-			label = "blue:sys";
-			gpios = <&gpio 32 GPIO_ACTIVE_LOW>;
-		};
-
-		internet {
-			label = "blue:internet";
-			gpios = <&gpio 29 GPIO_ACTIVE_LOW>;
-		};
-
-		wlan2g {
-			label = "blue:wlan2g";
-			gpios = <&gpio 33 GPIO_ACTIVE_LOW>;
-		};
-
-		wlan5g {
-			label = "blue:wlan5g";
-			gpios = <&gpio 28 GPIO_ACTIVE_LOW>;
+		led_system: system {
+			label = "red:system";
+			gpios = <&gpio 7 GPIO_ACTIVE_LOW>;
 		};
 	};
 
@@ -53,7 +37,7 @@
 
 		reset {
 			label = "reset";
-			gpios = <&gpio 18 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 18 GPIO_ACTIVE_HIGH>;
 			linux,code = <KEY_RESTART>;
 		};
 	};
@@ -107,8 +91,7 @@
 	flash@0 {
 		compatible = "jedec,spi-nor";
 		reg = <0>;
-		spi-max-frequency = <50000000>;
-		m25p,fast-read;
+		spi-max-frequency = <45000000>;
 		broken-flash-reset;
 
 		partitions {
@@ -154,23 +137,21 @@
 
 &pcie {
 	status = "okay";
-	pinctrl-0 = <&pcie_pins>, <&uart3_gpio>;
-	reset-gpios = <&gpio 19 GPIO_ACTIVE_LOW>,
-		      <&gpio 7 GPIO_ACTIVE_LOW>;
 };
 
 &pcie0 {
 	mt76@0,0 {
 		reg = <0x0000 0 0 0 0>;
-		mediatek,mtd-eeprom = <&factory 0x8000>;
-		ieee80211-freq-limit = <5000000 6000000>;
+		mediatek,mtd-eeprom = <&factory 0x0000>;
+		ieee80211-freq-limit = <2400000 2500000>;
 	};
 };
 
 &pcie1 {
 	mt76@0,0 {
 		reg = <0x0000 0 0 0 0>;
-		mediatek,mtd-eeprom = <&factory 0x0000>;
+		mediatek,mtd-eeprom = <&factory 0x8000>;
+		ieee80211-freq-limit = <5000000 6000000>;
 	};
 };
 
@@ -180,24 +161,19 @@
 
 &switch0 {
 	ports {
-		port@0 {
-			status = "okay";
-			label = "lan1";
-		};
-
 		port@1 {
-			status = "okay";
-			label = "lan2";
-		};
-
-		port@2 {
 			status = "okay";
 			label = "lan3";
 		};
 
+		port@2 {
+			status = "okay";
+			label = "lan2";
+		};
+
 		port@3 {
 			status = "okay";
-			label = "lan4";
+			label = "lan1";
 		};
 
 		port@4 {
