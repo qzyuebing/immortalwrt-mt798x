@@ -5,7 +5,7 @@
 
 / {
 	compatible = "lenovo,newifi-d1", "mediatek,mt7621-soc";
-	model = "Newifi-D1";
+	model = "Newifi-D1 by BI4PCS";
 
 	aliases {
 		led-boot = &led_blue;
