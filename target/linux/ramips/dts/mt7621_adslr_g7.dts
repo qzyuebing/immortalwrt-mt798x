@@ -22,7 +22,7 @@
 
 		led_sys: sys {
 			label = "blue:sys";
-			gpios = <&gpio 7 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 15 GPIO_ACTIVE_LOW>;
 		};
 	};
 
