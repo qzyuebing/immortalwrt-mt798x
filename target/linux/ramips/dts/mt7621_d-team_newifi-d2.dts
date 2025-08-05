@@ -129,10 +129,6 @@
 	};
 };
 
-&uart1 {
-	status = "okay";  
-};
-
 &pcie {
 	status = "okay";
 };
@@ -188,7 +184,7 @@
 
 &state_default {
 	gpio {
-		groups = "i2c", "jtag";
+		groups = "i2c", "jtag", "uart2", "uart3";
 		function = "gpio";
 	};
 };
