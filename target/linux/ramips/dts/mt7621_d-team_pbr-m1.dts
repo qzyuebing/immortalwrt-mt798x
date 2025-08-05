@@ -126,9 +126,14 @@
 	};
 };
 
-&uart3 {
-	status = "okay"; 
-}; 
+&pinctrl {
+	uart3_gpio: uart3-gpio {
+		uart3 {
+			groups = "uart3";
+			function = "gpio";
+		};
+	};
+};
 
 &pcie {
 	status = "okay";
