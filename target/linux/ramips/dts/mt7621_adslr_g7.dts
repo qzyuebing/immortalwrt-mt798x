@@ -107,24 +107,19 @@
 
 &switch0 {
 	ports {
-		port@0 {
+		port@1 {
 			status = "okay";
 			label = "lan1";
 		};
 
-		port@1 {
+		port@2 {
 			status = "okay";
 			label = "lan2";
 		};
 
-		port@2 {
-			status = "okay";
-			label = "lan3";
-		};
-
 		port@3 {
 			status = "okay";
-			label = "lan4";
+			label = "lan3";
 		};
 
 		port@4 {
