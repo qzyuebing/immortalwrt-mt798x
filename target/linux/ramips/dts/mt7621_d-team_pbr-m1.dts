@@ -126,7 +126,7 @@
 	};
 };
 
-&uart2 {
+&uart3 {
 	status = "okay";
 };
 
