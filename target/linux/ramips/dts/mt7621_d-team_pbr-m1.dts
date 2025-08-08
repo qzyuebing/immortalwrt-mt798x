@@ -179,5 +179,5 @@
 	gpio {
 		groups = "wdt", "rgmii2", "jtag";
 		function = "gpio";
-    };
+	};
 };
