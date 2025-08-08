@@ -382,7 +382,7 @@ endef
 TARGET_DEVICES += totolink_a3
 
 define Device/totolink_lr1200
-  IMAGE_SIZE := 7872k
+  IMAGE_SIZE := 32448k
   DEVICE_VENDOR := TOTOLINK
   DEVICE_MODEL := LR1200
   DEVICE_PACKAGES := kmod-mt76x2 kmod-usb2 uqmi
