@@ -126,10 +126,6 @@
 	};
 };
 
-&uart3 {
-	status = "okay";
-};
-
 &pcie {
 	status = "okay";
 };
@@ -181,7 +177,7 @@
 
 &state_default {
 	gpio {
-		groups = "wdt", "rgmii2", "jtag";
+		groups = "wdt", "rgmii2", "jtag", "uart3";
 		function = "gpio";
 	};
 };
