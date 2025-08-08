@@ -179,10 +179,5 @@
 	gpio {
 		groups = "wdt", "rgmii2", "jtag";
 		function = "gpio";
-	};
-
-    uart3 {
-        groups = "uart3";  
-        function = "uart"; 
     };
 };
