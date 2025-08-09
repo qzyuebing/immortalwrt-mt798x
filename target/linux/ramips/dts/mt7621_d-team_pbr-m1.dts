@@ -71,20 +71,6 @@
 	};
 };
 
-&i2c {
-	status = "okay";
-
-	rtc@51 {
-		status = "okay";
-		compatible = "nxp,pcf8563";
-		reg = <0x51>;
-	};
-};
-
-&sdhci {
-	status = "okay";
-};
-
 &spi0 {
 	status = "okay";
 
