@@ -43,9 +43,14 @@
 		};
 	};
 
-	ubi-concat {
-		compatible = "mtd-concat";
-		devices = <&ubiconcat0 &ubiconcat1>;
+&spi0 {
+	status = "okay";
+
+	flash@0 {
+		compatible = "jedec,spi-nor";
+		reg = <0>;
+		spi-max-frequency = <45000000>;
+		broken-flash-reset;
 
 		partitions {
 			compatible = "fixed-partitions";
@@ -53,61 +58,32 @@
 			#size-cells = <1>;
 
 			partition@0 {
-				label = "ubi";
-				reg = <0x0 0x79c0000>;
+				label = "u-boot";
+				reg = <0x0 0x30000>;
+				read-only;
+			};
+
+			partition@30000 {
+				label = "u-boot-env";
+				reg = <0x30000 0x10000>;
+				read-only;
+			};
+
+			factory: partition@40000 {
+				label = "factory";
+				reg = <0x40000 0x10000>;
+				read-only;
+			};
+
+			partition@50000 {
+				compatible = "denx,uimage";
+				label = "firmware";
+				reg = <0x50000 0x1fb0000>;
 			};
 		};
 	};
 };
 
-&nand {
-	status = "okay";
-
-	partitions {
-		compatible = "fixed-partitions";
-		#address-cells = <1>;
-		#size-cells = <1>;
-
-		partition@0 {
-			label = "u-boot";
-			reg = <0x0 0x80000>;
-			read-only;
-		};
-
-		partition@80000 {
-			label = "debug";
-			reg = <0x80000 0x80000>;
-			read-only;
-		};
-
-		factory: partition@100000 {
-			label = "factory";
-			reg = <0x100000 0x40000>;
-			read-only;
-		};
-
-		partition@140000 {
-			label = "kernel";
-			reg = <0x140000 0x400000>;
-		};
-
-		ubiconcat0: partition@540000 {
-			label = "ubiconcat0";
-			reg = <0x540000 0x1c80000>;
-		};
-
-		partition@21c0000 {
-			label = "bdinfo";
-			reg = <0x21c0000 0x80000>;
-			read-only;
-		};
-
-		ubiconcat1: partition@2240000 {
-			label = "ubiconcat1";
-			reg = <0x2240000 0x5d40000>;
-		};
-	};
-};
 
 &pcie {
 	status = "okay";
@@ -133,7 +109,7 @@
 	ports {
 		port@1 {
 			status = "okay";
-			label = "lan1";
+			label = "lan3";
 		};
 
 		port@2 {
@@ -143,7 +119,7 @@
 
 		port@3 {
 			status = "okay";
-			label = "lan3";
+			label = "lan1";
 		};
 
 		port@4 {
