@@ -7,7 +7,7 @@
 
 / {
 	compatible = "adslr,g7", "mediatek,mt7621-soc";
-	model = "ADSLR G7";
+	model = "K1 Pro";
 
 	aliases {
 		led-boot = &led_sys;
