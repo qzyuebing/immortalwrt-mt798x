@@ -8,10 +8,10 @@
 	model = "IPTV-UDPXY by BI4PCS";
 
 	aliases {
-		led-boot = &led_system;
-		led-failsafe = &led_system;
-		led-running = &led_status;
-		led-upgrade = &led_status;
+		led-boot = &led_sys;
+		led-failsafe = &led_sys;
+		led-running = &led_sys;
+		led-upgrade = &led_sys;
 	};
 
 	chosen {
@@ -19,15 +19,13 @@
 	};
 
 	leds {
-		compatible = "gpio-leds";
-
-		led_status: status {
-			label = "white:status";
+		led_sys: sys {
+			label = "blue:sys";
 			gpios = <&gpio 6 GPIO_ACTIVE_LOW>;
 		};
 
-		led_system: system {
-			label = "red:system";
+		internet {
+			label = "blue:internet";
 			gpios = <&gpio 7 GPIO_ACTIVE_LOW>;
 		};
 	};
@@ -71,6 +69,20 @@
 	};
 };
 
+&i2c {
+	status = "okay";
+
+	rtc@51 {
+		status = "okay";
+		compatible = "nxp,pcf8563";
+		reg = <0x51>;
+	};
+};
+
+&sdhci {
+	status = "okay";
+};
+
 &spi0 {
 	status = "okay";
 
@@ -112,8 +124,13 @@
 	};
 };
 
-&uartlite3 {
-	status = "okay";
+&pinctrl {
+	uart3_gpio: uart3-gpio {
+		uart3 {
+			groups = "uart3";
+			function = "gpio";
+		};
+	};
 };
 
 &pcie {
