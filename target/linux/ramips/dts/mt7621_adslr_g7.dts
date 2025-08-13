@@ -40,16 +40,16 @@
 		compatible = "gpio-export";
 		#size-cells = <0>;
 
-		usb2power {
-			gpio-export,name = "usb2power";
+		power_usb2 {
+			gpio-export,name = "power_usb2";
 			gpio-export,output = <1>;
-			gpios = <&gpio 9 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio 22 GPIO_ACTIVE_HIGH>;
 		};
 
-		usb3power {
-			gpio-export,name = "usb3power";
+		power_usb3 {
+			gpio-export,name = "power_usb3";
 			gpio-export,output = <1>;
-			gpios = <&gpio 11 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio 25 GPIO_ACTIVE_HIGH>;
 		};
 	};
 };
