@@ -19,6 +19,8 @@
 	};
 
 	leds {
+		compatible = "gpio-leds";
+
 		led_sys: sys {
 			label = "blue:sys";
 			gpios = <&gpio 6 GPIO_ACTIVE_LOW>;
