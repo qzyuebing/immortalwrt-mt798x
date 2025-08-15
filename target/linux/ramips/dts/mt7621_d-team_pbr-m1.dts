@@ -23,12 +23,12 @@
 
 		led_sys: sys {
 			label = "red:system";
-			gpios = <&gpio 6 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 7 GPIO_ACTIVE_LOW>;
 		};
 
 		internet {
 			label = "white:status";
-			gpios = <&gpio 7 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio 6 GPIO_ACTIVE_LOW>;
 		};
 	};
 
