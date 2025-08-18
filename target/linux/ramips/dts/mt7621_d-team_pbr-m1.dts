@@ -22,13 +22,13 @@
 		compatible = "gpio-leds";
 
 		led_sys: sys {
-			label = "red:system";
-			gpios = <&gpio 7 GPIO_ACTIVE_LOW>;
+			label = "white:status";
+			gpios = <&gpio 6 GPIO_ACTIVE_LOW>;
 		};
 
 		internet {
-			label = "white:status";
-			gpios = <&gpio 6 GPIO_ACTIVE_LOW>;
+			label = "red:system";
+			gpios = <&gpio 7 GPIO_ACTIVE_LOW>;
 		};
 	};
 
